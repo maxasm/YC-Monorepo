@@ -5,7 +5,7 @@ Below is your **PRD converted into a clean, ordered GitHub-ready checklist**, st
 
 
 
-# ✅ Academic Writing & Research Support Platform
+# [x] Academic Writing & Research Support Platform
 
 ## 📌 Product Requirements Checklist (PRD)
 
