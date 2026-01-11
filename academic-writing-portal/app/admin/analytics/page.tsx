@@ -1,4 +1,4 @@
-import "use client";
+"use client";
 
 import { PageHeader } from "@/components/common/page-header";
 import { RevenueChart, TaskVolumeChart } from "@/components/charts/analytics";

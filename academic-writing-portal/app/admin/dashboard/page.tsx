@@ -1,4 +1,4 @@
-import "use client";
+"use client";
 
 import { Card } from "@/components/common/card";
 import { PageHeader } from "@/components/common/page-header";
