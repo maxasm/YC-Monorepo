@@ -4,7 +4,8 @@ import { Card } from "@/components/common/card";
 import { PageHeader } from "@/components/common/page-header";
 import { Badge } from "@/components/common/badge";
 import { Table } from "@/components/common/table";
-import type { Task, TableColumn } from "@/types";
+import type { Task } from "@/types";
+import type { TableColumn } from "@/components/common/table";
 
 // Mock metrics
 const metrics = [

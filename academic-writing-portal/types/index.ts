@@ -72,3 +72,10 @@ export interface EarningsSummary {
   lifetime: number;
   currency: string;
 }
+
+export interface TableColumn<T> {
+  key: keyof T & string;
+  header: string;
+  render?: (row: T) => React.ReactNode;
+  className?: string;
+}
