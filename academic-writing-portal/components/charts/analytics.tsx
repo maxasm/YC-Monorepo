@@ -1,7 +1,7 @@
 "use client";
 
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { Card } from "./card";
+import { Card } from "@/components/common/card";
 import type { AnalyticsPoint } from "@/types";
 
 interface RevenueChartProps {
