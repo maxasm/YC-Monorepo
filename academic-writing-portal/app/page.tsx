@@ -1,65 +1,85 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Badge } from "@/components/common/badge";
+import { buttonClassName } from "@/components/common/button";
+import { Card } from "@/components/common/card";
+
+const highlights = [
+  {
+    title: "Transparent pricing",
+    description: "Students see AI estimates; admins approve before payment.",
+  },
+  {
+    title: "Role clarity",
+    description: "Students submit, writers execute, admins govern allocations and disputes.",
+  },
+  {
+    title: "Academic tone",
+    description: "Professional, neutral UI built for controlled workflows.",
+  },
+];
+
+const roleCards = [
+  {
+    role: "Student",
+    copy: "Submit tasks, track progress, and view read-only AI pricing before admin approval.",
+    href: "/student/dashboard",
+  },
+  {
+    role: "Writer",
+    copy: "Work only on assigned tasks with clear deadlines, instructions, and revision history.",
+    href: "/writer/dashboard",
+  },
+  {
+    role: "Admin",
+    copy: "Review pricing, allocate writers, and monitor revenue with explicit confirmations.",
+    href: "/admin/dashboard",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-12">
+      <header className="flex flex-col gap-6 rounded-2xl bg-white p-8 shadow-sm">
+        <Badge tone="info">Academic Writing & Research Support</Badge>
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="space-y-3">
+            <h1 className="text-3xl font-semibold text-slate-900 md:text-4xl">Controlled, ethical writing workflows.</h1>
+            <p className="max-w-2xl text-lg text-slate-700">
+              A role-based portal that keeps pricing transparent, allocations controlled, and academic deliverables on track.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/login" className={buttonClassName({ variant: "primary" })}>
+              Log in
+            </Link>
+            <Link href="/register" className={buttonClassName({ variant: "secondary" })}>
+              Create account
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="grid gap-4 md:grid-cols-3">
+          {highlights.map((item) => (
+            <Card key={item.title} title={item.title} description={item.description} className="h-full" />
+          ))}
         </div>
-      </main>
+      </header>
+
+      <section className="grid gap-6 md:grid-cols-3">
+        {roleCards.map((card) => (
+          <Card key={card.role} title={card.role} description={card.copy} actions={<RoleLink href={card.href} />} />
+        ))}
+      </section>
     </div>
+  );
+}
+
+function RoleLink({ href }: { href: string }) {
+  return (
+    <Link
+      href={href}
+      className="text-sm font-semibold text-indigo-700 hover:text-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+    >
+      Enter workspace
+    </Link>
   );
 }
